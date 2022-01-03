@@ -1,7 +1,5 @@
 require("dotenv").config();
 
-require("dotenv").config();
-
 //___________________
 //Dependencies
 //___________________
