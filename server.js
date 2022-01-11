@@ -33,14 +33,37 @@ app.get("/dailies/new", (req, res) => {
 });
 
 // Delete
-
+app.delete("/dailies/:id", (req, res) => {
+  Daily.findByIdAndDelete(req.params.id, (err, daily) => {
+    res.redirect("/dailies");
+  });
+});
 // Update
-
+app.put("/dailies/:id", (req, res) => {
+  req.body.completed = !!req.body.completed;
+  Daily.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    },
+    (err, daily) => {
+      res.redirect(`/dailies/${req.params.id}`);
+    }
+  );
+});
 // Create
 app.post("/dailies", (req, res) => {
   req.body.completed = !!req.body.completed;
   Daily.create(req.body, (err, daily) => {
     res.redirect("/dailies");
+  });
+});
+
+// Edit
+app.get("/dailies/:id/edit", (req, res) => {
+  Daily.findById(req.params.id, (err, daily) => {
+    res.render("edit.ejs", { daily });
   });
 });
 

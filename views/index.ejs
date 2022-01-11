@@ -10,6 +10,9 @@
     <h1>Welcome to Dailies!</h1>
     <ul>
       <% dailies.forEach(daily => { %>
+      <form action="/dailies/<%= daily._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="X" />
+      </form>
       <li>
         <a href="/dailies/<%= daily._id %>"><%= daily.title %></a>
       </li>

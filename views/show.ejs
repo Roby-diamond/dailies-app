@@ -9,5 +9,7 @@
   <body>
     <h3><%= daily.title %></h3>
     <p><%= daily.description %></p>
+    <a href="/dailies/<%= daily._id %>/edit">Edit</a>
+    <p>This Daily <%= daily.completed ? 'has' : 'has not'%> been completed!</p>
   </body>
 </html>
