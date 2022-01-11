@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Daily</title>
+  </head>
+  <body>
+    <h1>Create a New Daily!</h1>
+    <form action="/dailies" method="post">
+      Title:
+      <input type="text" name="title" placeholder="Vet apt" /> Description:
+      <input
+        type="text"
+        name="description"
+        placeholder="Take emu to vet apt 2pm"
+      />
+      Completed: <input type="checkbox" name="completed" id="" />
+      <input type="submit" value="CREATE" />
+    </form>
+  </body>
+</html>

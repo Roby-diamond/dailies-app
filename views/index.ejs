@@ -8,5 +8,13 @@
   </head>
   <body>
     <h1>Welcome to Dailies!</h1>
+    <ul>
+      <% dailies.forEach(daily => { %>
+      <li>
+        <a href="/dailies/<%= daily._id %>"><%= daily.title %></a>
+      </li>
+      <% }) %>
+      <a href="/dailies/new">New Daily</a>
+    </ul>
   </body>
 </html>

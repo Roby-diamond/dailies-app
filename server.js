@@ -1,16 +1,14 @@
-require("dotenv").config();
-
 const express = require("express");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const app = express();
+const Daily = require("./models/daily");
+
+require("dotenv").config();
 
 const { PORT, MONGODB_URI } = process.env;
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(MONGODB_URI);
 
 const db = mongoose.connection;
 db.on("error", (err) => console.log(err.message + " is mongodb not running?"));
@@ -23,8 +21,33 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 
 // Index
-app.get("/", (req, res) => {
-  res.render("index.ejs");
+app.get("/dailies", (req, res) => {
+  Daily.find({}, (err, dailies) => {
+    res.render("index.ejs", { dailies });
+  });
 });
 
-app.listen(PORT, () => console.log("express is listening on:", PORT));
+// New
+app.get("/dailies/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+// Delete
+
+// Update
+
+// Create
+app.post("/dailies", (req, res) => {
+  req.body.completed = !!req.body.completed;
+  Daily.create(req.body, (err, daily) => {
+    res.redirect("/dailies");
+  });
+});
+
+// Show
+app.get("/dailies/:id", (req, res) => {
+  Daily.findById(req.params.id, (err, daily) => {
+    res.render("show.ejs", { daily });
+  });
+});
+app.listen(PORT, () => console.log(`express is listening on: ${PORT}`));
