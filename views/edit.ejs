@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit your daily</title>
-  </head>
+  <%- include('./partials/head') %>
   <body>
     <h1>Daily Editor</h1>
+    <div class ="qfc-container">
     <form action="/dailies/<%= daily._id %>?_method=PUT" method="POST">
-      Title:
-      <input type="text" name="title" value="<%= daily.title %>" /> <br />
-      Description:
+      <label for="title"> Title: </label> 
+      <input type="text" name="title" value="<%= daily.title %>" /> <br>
+      <label for="description"> Description: </label>
       <input type="text" name="description" value="<%= daily.description %>" />
       <br />
       Completed: <input type="checkbox" name="completed" <% if(daily.completed
       === true) { %> checked <% } %>>
       <input type="submit" value="SUBMIT" />
+      </div>
     </form>
   </body>
 </html>

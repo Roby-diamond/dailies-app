@@ -30,6 +30,6 @@ app.use(
   })
 );
 
-app.use("/dailies", dailiesController);
+app.use("/", dailiesController);
 
 app.listen(PORT, () => console.log(`express is listening on: ${PORT}`));

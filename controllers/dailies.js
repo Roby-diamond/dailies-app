@@ -10,18 +10,18 @@ dailiesRouter.get("/", (req, res) => {
 });
 
 // New
-dailiesRouter.get("/new", (req, res) => {
+dailiesRouter.get("/dailies/new", (req, res) => {
   res.render("new.ejs");
 });
 
 // Delete
-dailiesRouter.delete("/:id", (req, res) => {
+dailiesRouter.delete("/dailies/:id", (req, res) => {
   Daily.findByIdAndDelete(req.params.id, (err, daily) => {
-    res.redirect("/dailies");
+    res.redirect("/");
   });
 });
 // Update
-dailiesRouter.put("/:id", (req, res) => {
+dailiesRouter.put("/dailies/:id", (req, res) => {
   req.body.completed = !!req.body.completed;
   Daily.findByIdAndUpdate(
     req.params.id,
@@ -30,20 +30,20 @@ dailiesRouter.put("/:id", (req, res) => {
       new: true,
     },
     (err, daily) => {
-      res.redirect("/dailies/");
+      res.redirect("/");
     }
   );
 });
 // Create
-dailiesRouter.post("/", (req, res) => {
+dailiesRouter.post("/dailies", (req, res) => {
   req.body.completed = !!req.body.completed;
   Daily.create(req.body, (err, daily) => {
-    res.redirect("/dailies");
+    res.redirect("/");
   });
 });
 
 // Edit
-dailiesRouter.get("/:id/edit", (req, res) => {
+dailiesRouter.get("/dailies/:id/edit", (req, res) => {
   Daily.findById(req.params.id, (err, daily) => {
     res.render("edit.ejs", { daily });
   });
