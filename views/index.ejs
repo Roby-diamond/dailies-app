@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dailies</title>
-  </head>
+  <%- include('./partials/head') %>
   <body>
     <h1>Welcome to Dailies!</h1>
-    <ul>
-      <% dailies.forEach(daily => { %>
-      <form action="/dailies/<%= daily._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="X" />
+    <div class ="whole">
+    <% dailies.forEach(daily => { %>
+      
+      <div class ="daily">
+       <h3> <a href="/dailies/<%= daily._id %>/edit" id="edit"><%= daily.title %> </a></h3>
+        <p><%= daily.description %></p>
+        <form action="/dailies/<%= daily._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Remove" id="delete" />
       </form>
-      <li>
-        <a href="/dailies/<%= daily._id %>"><%= daily.title %></a>
-      </li>
-      <% }) %>
-
+    </div>
+      <% }) %> 
+    </div>
       <a href="/dailies/new">New Daily</a>
     </ul>
   </body>

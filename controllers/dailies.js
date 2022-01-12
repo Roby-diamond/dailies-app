@@ -30,7 +30,7 @@ dailiesRouter.put("/:id", (req, res) => {
       new: true,
     },
     (err, daily) => {
-      res.redirect(`/dailies/${req.params.id}`);
+      res.redirect("/dailies/");
     }
   );
 });
@@ -46,13 +46,6 @@ dailiesRouter.post("/", (req, res) => {
 dailiesRouter.get("/:id/edit", (req, res) => {
   Daily.findById(req.params.id, (err, daily) => {
     res.render("edit.ejs", { daily });
-  });
-});
-
-// Show
-dailiesRouter.get("/:id", (req, res) => {
-  Daily.findById(req.params.id, (err, daily) => {
-    res.render("show.ejs", { daily });
   });
 });
 
