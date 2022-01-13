@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const dailySchema = new Schema(
   {
     title: String,
@@ -9,6 +10,4 @@ const dailySchema = new Schema(
   { timestamps: true }
 );
 
-const Daily = mongoose.model("Daily", dailySchema);
-
-module.exports = Daily;
+module.exports = mongoose.model("Daily", dailySchema);

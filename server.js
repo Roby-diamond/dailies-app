@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const expressSession = require("express-session");
 
 const dailiesController = require("./controllers/dailies");
 
 const app = express();
+
+app.set("view engine", "ejs");
 
 require("dotenv").config();
 
@@ -22,13 +23,6 @@ app.use(express.static("public"));
 
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
-app.use(
-  expressSession({
-    secret: SECRET,
-    resave: false,
-    saveUninitialized: false,
-  })
-);
 
 app.use("/", dailiesController);
 

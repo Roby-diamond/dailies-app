@@ -5,13 +5,13 @@ const Daily = require("../models/daily");
 // Index
 dailiesRouter.get("/", (req, res) => {
   Daily.find({}, (err, dailies) => {
-    res.render("index.ejs", { dailies });
+    res.render("index", { dailies });
   });
 });
 
 // New
 dailiesRouter.get("/dailies/new", (req, res) => {
-  res.render("new.ejs");
+  res.render("new");
 });
 
 // Delete
@@ -45,7 +45,7 @@ dailiesRouter.post("/dailies", (req, res) => {
 // Edit
 dailiesRouter.get("/dailies/:id/edit", (req, res) => {
   Daily.findById(req.params.id, (err, daily) => {
-    res.render("edit.ejs", { daily });
+    res.render("edit", { daily });
   });
 });
 
