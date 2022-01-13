@@ -1,6 +1,15 @@
 const express = require("express");
 const dailiesRouter = express.Router();
 const Daily = require("../models/daily");
+const dailySeed = require("../models/dailySeed");
+
+// Seed
+dailiesRouter.get("/seed", (req, res) => {
+  Daily.deleteMany({}, (err, dailies) => {});
+  Daily.create(dailySeed, (err, dailies) => {
+    res.redirect("/");
+  });
+});
 
 // Index
 dailiesRouter.get("/", (req, res) => {
