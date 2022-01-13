@@ -17,6 +17,10 @@ a {
   color: inherit;
 }
 
+p {
+  color: #606060;
+}
+
 .whole {
   text-align: center;
   display: flex;
@@ -32,14 +36,26 @@ a {
   box-shadow: 10px 5px 5px black;
   padding: 10px;
   margin: 20px;
+  background-color: #ececec;
 }
 
+#edit {
+  padding: 5px;
+  border-bottom: 1px solid rgb(118, 206, 247);
+}
+
+#remove {
+  color: #e4001b;
+}
+
+/* css boiletplate code */
+
+body {
+  --main-bg-color: rgb(223, 219, 219);
+}
 .qfc-container {
   --form-theme-color: rgb(118, 206, 247);
   --form-bg-color: rgb(223, 219, 219);
   --button-hover: gray;
   --input-text-color: black;
-}
-body {
-  --main-bg-color: rgb(223, 219, 219);
 }
