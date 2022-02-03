@@ -8,11 +8,10 @@ A to do app that lets users add edit and delete daily to do items
 - CSS
 - JavaScript
 - Node.js
-- ejs
+- EJS
 - Express
 - MongoDB
 - Mongoose
-- Google Fonts
 
 ## Screenshots
 
